@@ -16,7 +16,9 @@ cv2.setNumThreads(0)
 import torch
 import math
 import random
-from PIL import Image, ImageOps, ImageEnhance, PILLOW_VERSION
+#from PIL import Image, ImageOps, ImageEnhance, PILLOW_VERSION
+from PIL import Image, ImageOps, ImageEnhance
+import PIL
 try:
     import accimage
 except ImportError:
