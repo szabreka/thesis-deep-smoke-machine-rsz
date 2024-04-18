@@ -17,9 +17,9 @@ cv.setNumThreads(12)
 # Process videos into rgb frame files and optical flow files
 # The file format is numpy.array
 def main(argv):
-    rgb_dir = "../data/rgb/"
-    flow_dir = "../data/flow/"
-    metadata_path = "../data/metadata.json"
+    rgb_dir = "/projects/0/prjs0930/data/rgb/"
+    flow_dir = "/projects/0/prjs0930/data/flow/"
+    metadata_path = "/home/rszabo/uva_thesis_project/data/datasets/ijmond_dataset.json"
     num_workers = 1
 
     # Check for saving directories and create if they don't exist
@@ -33,14 +33,15 @@ def main(argv):
 
 
 def compute_and_save_flow(video_data):
-    video_dir = "../data/videos/"
-    rgb_dir = "../data/rgb/"
-    flow_dir = "../data/flow/"
+    video_dir = "/projects/0/prjs0930/data/ijmond_videos/"
+    rgb_dir = "/projects/0/prjs0930/data/rgb/"
+    flow_dir = "/projects/0/prjs0930/data/flow/"
     file_name = video_data["file_name"]
     rgb_vid_in_p = str(video_dir + file_name + ".mp4")
     rgb_4d_out_p = str(rgb_dir + file_name + ".npy")
     flow_4d_out_p = str(flow_dir + file_name + ".npy")
     if not is_file_here(rgb_vid_in_p):
+        print(rgb_vid_in_p)
         return
     if is_file_here(rgb_4d_out_p):
         rgb_4d_out_p = None
