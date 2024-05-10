@@ -19,7 +19,7 @@ cv.setNumThreads(12)
 def main(argv):
     rgb_dir = "/projects/0/prjs0930/data/rgb/"
     flow_dir = "/projects/0/prjs0930/data/flow/"
-    metadata_path = "/home/rszabo/uva_thesis_project/data/datasets/ijmond_dataset.json"
+    metadata_path = "/home/rszabo/uva_thesis_project/data/datasets/merged_dataset.json"
     num_workers = 1
 
     # Check for saving directories and create if they don't exist
@@ -33,7 +33,7 @@ def main(argv):
 
 
 def compute_and_save_flow(video_data):
-    video_dir = "/projects/0/prjs0930/data/ijmond_videos/"
+    video_dir = "/projects/0/prjs0930/data/merged_videos/"
     rgb_dir = "/projects/0/prjs0930/data/rgb/"
     flow_dir = "/projects/0/prjs0930/data/flow/"
     file_name = video_data["file_name"]

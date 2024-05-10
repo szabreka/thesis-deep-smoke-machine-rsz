@@ -61,7 +61,7 @@ class I3dLearner(BaseLearner):
             augment=True, # use data augmentation or not
             num_workers=12, # number of workers for the dataloader
             mode="rgb", # can be "rgb" or "flow" or "rgbd"
-            p_frame="../data/rgb/", # path to load video frames
+            p_frame="/projects/0/prjs0930/data/rgb/", # path to load video frames
             code_testing=False # a special flag for testing if the code works
             ):
         super().__init__(use_cuda=use_cuda)
@@ -279,9 +279,9 @@ class I3dLearner(BaseLearner):
     def fit(self,
             p_model=None, # the path to load the pretrained or previously self-trained model
             model_id_suffix="", # the suffix appended after the model id
-            p_metadata_train="../data/split/metadata_train_split_0_by_camera.json", # metadata path (train)
-            p_metadata_validation="../data/split/metadata_validation_split_0_by_camera.json", # metadata path (validation)
-            p_metadata_test="../data/split/metadata_test_split_0_by_camera.json", # metadata path (test)
+            p_metadata_train="/home/rszabo/uva_thesis_project/data/split/metadata_train_split_by_date.json", # metadata path (train)
+            p_metadata_validation="/home/rszabo/uva_thesis_project/data/split/metadata_validation_split_by_date.json", # metadata path (validation)
+            p_metadata_test="/home/rszabo/uva_thesis_project/data/split/metadata_test_split_by_date.json", # metadata path (test)
             save_model_path="../data/saved_i3d/[model_id]/model/", # path to save the models ([model_id] will be replaced)
             save_tensorboard_path="../data/saved_i3d/[model_id]/run/", # path to save data ([model_id] will be replaced)
             save_log_path="../data/saved_i3d/[model_id]/log/train.log", # path to save log files ([model_id] will be replaced)
@@ -613,9 +613,9 @@ class I3dLearner(BaseLearner):
     def extract_features(self,
             p_model=None, # the path to load the pretrained or previously self-trained model
             p_feat="../data/i3d_features_rgb/", # path to save features
-            p_metadata_train="../data/split/metadata_train_split_0_by_camera.json", # metadata path (train)
-            p_metadata_validation="../data/split/metadata_validation_split_0_by_camera.json", # metadata path (validation)
-            p_metadata_test="../data/split/metadata_test_split_0_by_camera.json", # metadata path (test)
+            p_metadata_train="/home/rszabo/uva_thesis_project/data/split/metadata_train_split_by_date.json", # metadata path (train)
+            p_metadata_validation="/home/rszabo/uva_thesis_project/data/split/metadata_validation_split_by_date.json", # metadata path (validation)
+            p_metadata_test="/home/rszabo/uva_thesis_project/data/split/metadata_test_split_by_date.json", # metadata path (test)
             ):
         # Set path
         check_and_create_dir(p_feat) # check the directory for saving features
