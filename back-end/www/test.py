@@ -70,7 +70,7 @@ def cv(mode, method, model_path, augment=True, perturb=False):
     else:
         # Use the original video frames
         if mode == "rgb":
-            p_frame = "../data/rgb/"
+            p_frame = "../../../projects/0/prjs0930/data/rgb/"
         elif mode == "rgbd":
             p_frame = "../data/rgbd/"
         elif mode == "flow":
