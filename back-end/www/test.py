@@ -31,8 +31,9 @@ def test(method=None, model_path=None):
         cv("rgb", "i3d", model_path, augment=True, perturb=True)
     elif method == "i3d-flow-cv-1":
         cv("flow", "i3d", model_path, augment=True, perturb=False)
+    #this should be the one:  
     elif method == "i3d-ft-tc-rgb-cv-1":
-        cv("rgb", "i3d-ft-tc", model_path, augment=True, perturb=False)
+        cv("rgb", "i3d-ft-tc", model_path, augment=True, perturb=False)  
     elif method == "i3d-tc-rgb-cv-1":
         cv("rgb", "i3d-tc", model_path, augment=True, perturb=False)
     elif method == "i3d-tsm-rgb-cv-1":
@@ -52,6 +53,7 @@ def test(method=None, model_path=None):
     elif method == "svm-flow-cv-1":
         cv("flow", "svm", model_path)
     else:
+        print('The problem is with the test function')
         print("Method not allowed")
         return
 
@@ -70,7 +72,7 @@ def cv(mode, method, model_path, augment=True, perturb=False):
     else:
         # Use the original video frames
         if mode == "rgb":
-            p_frame = "../../../projects/0/prjs0930/data/rgb/"
+            p_frame = "/projects/0/prjs0930/data/rgb/"
         elif mode == "rgbd":
             p_frame = "../data/rgbd/"
         elif mode == "flow":
@@ -101,6 +103,7 @@ def cv(mode, method, model_path, augment=True, perturb=False):
     elif method == "svm":
         model = SvmLearner(mode=mode)
     else:
+        print('The problem is with the cv function')
         print("Method not allowed.")
         return
     model.test(p_model=model_path)

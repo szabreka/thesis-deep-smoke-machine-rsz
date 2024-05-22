@@ -503,7 +503,8 @@ class I3dLearner(BaseLearner):
             self.log("Cannot find a valid model id from the model path.")
             return
         p_root = p_model[:match.start()] + "/" + model_id + "/"
-        p_metadata_test = p_root + "metadata/metadata_test.json" # metadata path (test)
+        #p_metadata_test = p_root + "metadata/metadata_test.json" # metadata path (test)
+        p_metadata_test = "/home/rszabo/uva_thesis_project/data/split/metadata_test_split_by_date.json"
         save_log_path = p_root + "log/test.log" # path to save log files
         save_viz_path = p_root + "viz/" # path to save visualizations
 
