@@ -87,8 +87,13 @@ class BaseLearner(ABC):
     # Load model
     def load(self, model, in_path, ignore_fc=False, fill_dim=False):
         if model is not None and in_path is not None:
+            if torch.cuda.is_available():
+                device = torch.device("cuda") # use CUDA device
+            else:
+                device = torch.device("cpu") # use CPU device
+            print('Used device: ', device)
             self.log("Load model weights from " + in_path)
-            sd_loaded = torch.load(in_path)
+            sd_loaded = torch.load(in_path, map_location=device)
             if "state_dict" in sd_loaded:
                 sd_loaded = sd_loaded["state_dict"]
             sd_model = model.state_dict()
