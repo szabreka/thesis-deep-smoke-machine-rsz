@@ -13,6 +13,7 @@ schema.sql
 *screenlog*
 **/data/*
 !**/data/pretrained_models/
+!**/data/paper_result/
 !**/data/dataset/
 !**/data/production_url_list/
 back-end/www/**/*.pt
