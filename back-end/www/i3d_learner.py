@@ -279,9 +279,9 @@ class I3dLearner(BaseLearner):
     def fit(self,
             p_model=None, # the path to load the pretrained or previously self-trained model
             model_id_suffix="", # the suffix appended after the model id
-            p_metadata_train="/home/rszabo/uva_thesis_project/data/split/metadata_train_split_by_date.json", # metadata path (train)
-            p_metadata_validation="/home/rszabo/uva_thesis_project/data/split/metadata_validation_split_by_date.json", # metadata path (validation)
-            p_metadata_test="/home/rszabo/uva_thesis_project/data/split/metadata_test_split_by_date.json", # metadata path (test)
+            p_metadata_train="/home/rszabo/uva_thesis_project/data/split/metadata_train_split_4_by_camera.json", # metadata path (train)
+            p_metadata_validation="/home/rszabo/uva_thesis_project/data/split/metadata_validation_split_4_by_camera.json", # metadata path (validation)
+            p_metadata_test="/home/rszabo/uva_thesis_project/data/split/metadata_test_split_4_by_camera.json", # metadata path (test)
             save_model_path="../data/saved_i3d/[model_id]/model/", # path to save the models ([model_id] will be replaced)
             save_tensorboard_path="../data/saved_i3d/[model_id]/run/", # path to save data ([model_id] will be replaced)
             save_log_path="../data/saved_i3d/[model_id]/log/train.log", # path to save log files ([model_id] will be replaced)
@@ -504,7 +504,7 @@ class I3dLearner(BaseLearner):
             return
         p_root = p_model[:match.start()] + "/" + model_id + "/"
         #p_metadata_test = p_root + "metadata/metadata_test.json" # metadata path (test)
-        p_metadata_test = "/home/rszabo/uva_thesis_project/data/split/metadata_test_split_by_date.json"
+        p_metadata_test = "/home/rszabo/uva_thesis_project/data/split/metadata_test_split_4_by_camera.json"
         save_log_path = p_root + "log/test.log" # path to save log files
         save_viz_path = p_root + "viz/" # path to save visualizations
 

@@ -1,0 +1,67 @@
+[2024-06-03 14:35:06,486] INFO: ============================================================
+[2024-06-03 14:35:06,487] INFO: ============================================================
+[2024-06-03 14:35:06,487] INFO: Use Two-Stream Inflated 3D ConvNet learner
+[2024-06-03 14:35:06,487] INFO: Start testing with mode: rgb
+[2024-06-03 14:35:06,487] INFO: save_log_path: ../data/paper_result/RGB-TC/0000000-i3d-rgb-s2/log/test.log0
+[2024-06-03 14:35:06,487] INFO: save_viz_path: ../data/paper_result/RGB-TC/0000000-i3d-rgb-s2/viz/
+[2024-06-03 14:35:06,487] INFO: p_metadata_test: /home/rszabo/uva_thesis_project/data/split/metadata_test_split_2_by_camera.json
+[2024-06-03 14:35:06,487] INFO: 
+Parameters:
+  use_tsm: False
+  use_nl: False
+  use_tc: True
+  use_lstm: False
+  freeze_i3d: True
+  batch_size_train: 10
+  batch_size_test: 50
+  batch_size_extract_features: 40
+  max_steps: 2000
+  num_steps_per_update: 2
+  init_lr: 0.1
+  weight_decay: 1e-06
+  momentum: 0.9
+  milestones: [500, 1500]
+  gamma: 0.1
+  num_of_action_classes: 2
+  num_steps_per_check: 50
+  parallel: True
+  augment: True
+  num_workers: 12
+  mode: rgb
+  p_frame: /projects/0/prjs0930/data/rgb/
+
+[2024-06-03 14:35:09,572] INFO: Load model weights from ../data/paper_result/RGB-TC/0000000-i3d-rgb-s2/model/1458.pt
+[2024-06-03 14:35:09,860] INFO: Weights were from nn.DataParallel or DistributedDataParallel...
+[2024-06-03 14:35:09,860] INFO: Remove 'module.' prefix from state_dict keys...
+[2024-06-03 14:35:09,870] INFO: Load model weights from ../data/paper_result/RGB-TC/0000000-i3d-rgb-s2/model/1458.pt
+[2024-06-03 14:35:09,944] INFO: Weights were from nn.DataParallel or DistributedDataParallel...
+[2024-06-03 14:35:09,944] INFO: Remove 'module.' prefix from state_dict keys...
+[2024-06-03 14:35:09,953] INFO: Load model weights from ../data/paper_result/RGB-TC/0000000-i3d-rgb-s2/model/1458.pt
+[2024-06-03 14:35:10,064] INFO: Create dataloader for test
+[2024-06-03 14:35:19,446] INFO: Process batch 0
+[2024-06-03 14:35:31,360] INFO: Process batch 5
+[2024-06-03 14:35:33,109] INFO: Process batch 10
+[2024-06-03 14:35:34,857] INFO: Process batch 15
+[2024-06-03 14:35:36,606] INFO: Process batch 20
+[2024-06-03 14:35:38,355] INFO: Process batch 25
+[2024-06-03 14:35:40,104] INFO: Process batch 30
+[2024-06-03 14:35:41,853] INFO: Process batch 35
+[2024-06-03 14:35:43,602] INFO: Process batch 40
+[2024-06-03 14:35:45,777] INFO: Process batch 45
+[2024-06-03 14:35:47,706] INFO: Process batch 50
+[2024-06-03 14:35:50,751] INFO: Process batch 55
+[2024-06-03 14:35:52,499] INFO: Process batch 60
+[2024-06-03 14:35:55,957] INFO: Process batch 65
+[2024-06-03 14:35:57,706] INFO: Process batch 70
+[2024-06-03 14:35:58,107] INFO: Evaluate performance of phase: test
+              precision    recall  f1-score   support
+
+           0       0.83      0.96      0.89      2102
+           1       0.92      0.71      0.80      1428
+
+    accuracy                           0.86      3530
+   macro avg       0.88      0.84      0.85      3530
+weighted avg       0.87      0.86      0.85      3530
+
+[2024-06-03 14:35:58,111] INFO: roc_auc_score: [0.90275601 0.90283663]
+[2024-06-03 14:36:32,413] INFO: Done testing

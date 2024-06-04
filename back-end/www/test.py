@@ -107,7 +107,6 @@ def cv(mode, method, model_path, augment=True, perturb=False):
         print("Method not allowed.")
         return
     model.test(p_model=model_path)
-    print("Model parameters:", f"{np.sum([int(np.prod(p.shape)) for p in model.parameters()]):,}")
 
 if __name__ == "__main__":
     main(sys.argv)
