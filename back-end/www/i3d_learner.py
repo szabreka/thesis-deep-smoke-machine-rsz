@@ -57,7 +57,7 @@ class I3dLearner(BaseLearner):
             gamma=0.1, # MultiStepLR parameters
             num_of_action_classes=2, # currently we only have two classes (0 and 1, which means no and yes)
             num_steps_per_check=50, # the number of steps to save a model and log information
-            parallel=True, # use nn.DistributedDataParallel or not
+            parallel=False, # use nn.DistributedDataParallel or not
             augment=True, # use data augmentation or not
             num_workers=12, # number of workers for the dataloader
             mode="rgb", # can be "rgb" or "flow" or "rgbd"
@@ -226,6 +226,8 @@ class I3dLearner(BaseLearner):
                 model = DDP(model.to(device_ids[0]), device_ids=device_ids)
             else:
                 model.cuda()
+        else:
+            model.cpu()
 
         return model
 
@@ -279,9 +281,9 @@ class I3dLearner(BaseLearner):
     def fit(self,
             p_model=None, # the path to load the pretrained or previously self-trained model
             model_id_suffix="", # the suffix appended after the model id
-            p_metadata_train="/home/rszabo/uva_thesis_project/data/split/metadata_train_split_4_by_camera.json", # metadata path (train)
-            p_metadata_validation="/home/rszabo/uva_thesis_project/data/split/metadata_validation_split_4_by_camera.json", # metadata path (validation)
-            p_metadata_test="/home/rszabo/uva_thesis_project/data/split/metadata_test_split_4_by_camera.json", # metadata path (test)
+            p_metadata_train="/home/rszabo/uva_thesis_project/data/split/metadata_train_split_by_date.json", # metadata path (train)
+            p_metadata_validation="/home/rszabo/uva_thesis_project/data/split/metadata_validation_split_by_date.json", # metadata path (validation)
+            p_metadata_test="/home/rszabo/uva_thesis_project/data/split/metadata_test_split_by_date.json", # metadata path (test)
             save_model_path="../data/saved_i3d/[model_id]/model/", # path to save the models ([model_id] will be replaced)
             save_tensorboard_path="../data/saved_i3d/[model_id]/run/", # path to save data ([model_id] will be replaced)
             save_log_path="../data/saved_i3d/[model_id]/log/train.log", # path to save log files ([model_id] will be replaced)
@@ -504,9 +506,12 @@ class I3dLearner(BaseLearner):
             return
         p_root = p_model[:match.start()] + "/" + model_id + "/"
         #p_metadata_test = p_root + "metadata/metadata_test.json" # metadata path (test)
-        p_metadata_test = "/home/rszabo/uva_thesis_project/data/split/metadata_test_split_4_by_camera.json"
+        p_metadata_test = "/home/rszabo/uva_thesis_project/data/split/metadata_test_split_by_date.json"
         save_log_path = p_root + "log/test.log" # path to save log files
         save_viz_path = p_root + "viz/" # path to save visualizations
+
+        # Disable CUDA for CPU testing
+        self.use_cuda = False
 
         # Spawn processes
         n_gpu = torch.cuda.device_count()
@@ -535,6 +540,9 @@ class I3dLearner(BaseLearner):
         # Set model
         model = self.set_model(rank, world_size, self.mode, p_model, self.can_parallel, phase="test")
         if model is None: return None
+
+        parameter_count = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        print('Parameter count: ', parameter_count)
 
         # Load dataset
         metadata_path = {"test": p_metadata_test}
@@ -667,3 +675,6 @@ class I3dLearner(BaseLearner):
                     np.save(os.path.join(p_feat, fn), f.data.cpu().numpy())
 
         self.log("Done extracting features")
+
+
+        

@@ -3,7 +3,9 @@ from util import *
 from i3d_learner import I3dLearner
 from cnn_learner import CnnLearner
 from svm_learner import SvmLearner
+from datetime import datetime
 
+start_time = datetime.now()
 
 # This is the main script for model testing
 # For detailed usage, run terminal command "sh bg.sh"
@@ -106,7 +108,13 @@ def cv(mode, method, model_path, augment=True, perturb=False):
         print('The problem is with the cv function')
         print("Method not allowed.")
         return
+
     model.test(p_model=model_path)
 
 if __name__ == "__main__":
     main(sys.argv)
+
+end_time = datetime.now()
+print('Start time: ', start_time)
+print('Ending time: ', end_time)
+print('Overall time: ', end_time-start_time)

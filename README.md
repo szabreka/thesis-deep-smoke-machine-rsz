@@ -1,4 +1,40 @@
 # deep-smoke-machine
+
+This repository is forked from https://github.com/CMU-CREATE-Lab/deep-smoke-machine and used as a baseline model for a thesis project to the Master Information Studies, Data Science track at the University of Amsterdam.
+
+**Title of the project:** A Lightweight CLIP-Based Ensemble Model for State-of-the-art Industrial Smoke Detection from Video Clips
+
+**Supervisor of the project:** Dr. Yen-Chia Hsu (y.c.hsu@uva.nl)
+
+**Date of submission:** 30.06.2024
+
+**Abstarct of the thesis report:** Advanced computer vision techniques have led to the development
+of various vision-based approaches to tackle the complex challenge
+of smoke detection. A lightweight AI tool that can recognize poten-
+tially harmful industrial emissions would aid local communities in
+their fight for clean air. This thesis addresses the research gap in
+the potential benefits of utilizing OpenAI’s Contrastive Language-
+Image Pre-training (CLIP) model for industrial smoke detection.
+The proposed Vision-Language model exploits the advantages of
+comparing text and image semantics. Prior research has primar-
+ily utilized Convolutional Neural Networks, Vision Transformers,
+and segmentation methods. This study evaluates CLIP in indus-
+trial smoke detection in terms of performance and computational
+efficiency. Experiments show that fully-supervised CLIP training,
+particularly when utilizing linear probe representation learning,
+performs better than zero-shot and few-shot setups for smoke de-
+tection. Additionally, an ensemble approach, combining a fully-
+supervised CLIP model with a small MobileNetV3 using a GRU
+or LSTM layer outperforms the baseline Two-Stream Inflated 3D
+ConvNet model with a single Timeception layer in terms of light-
+weight design, as the model can be run using only CPU cores. The
+ensemble model achieved an average F1 score of 0.72, indicating a
+promising approach for smoke detection.
+
+**Link to the thesis project**: https://github.com/szabreka/uva_thesis_project 
+
+# Original READ-ME file:
+
 Deep learning models and dataset for recognizing industrial smoke emissions. The videos are from the [smoke labeling tool](https://github.com/CMU-CREATE-Lab/video-labeling-tool). The code in this repository assumes that Ubuntu 18.04 server is installed. The code is released under the BSD 3-clause license, and the dataset is released under the Creative Commons Zero (CC0) license. If you found this dataset and the code useful, we would greatly appreciate it if you could cite our paper below:
 
 Yen-Chia Hsu, Ting-Hao (Kenneth) Huang, Ting-Yao Hu, Paul Dille, Sean Prendi, Ryan Hoffman, Anastasia Tsuhlares, Jessica Pachuta, Randy Sargent, and Illah Nourbakhsh. 2021. Project RISE: Recognizing Industrial Smoke Emissions. Proceedings of the AAAI Conference on Artificial Intelligence (AAAI 2021). https://ojs.aaai.org/index.php/AAAI/article/view/17739
